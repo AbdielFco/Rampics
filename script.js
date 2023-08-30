@@ -1,32 +1,25 @@
 const imageElement = document.getElementById("image");
 const nextButton = document.getElementById("nextButton");
 
-const images = [
-    "https://via.placeholder.com/300",
-    "https://via.placeholder.com/400",
-    "https://via.placeholder.com/500",
-    // Add more image URLs here
-];
-
-let currentIndex = 0;
-
-function updateImage(index) {
-    imageElement.src = images[index];
+function getRandomImageURL() {
+    const width = 300 + Math.floor(Math.random() * 300);
+    const height = 300 + Math.floor(Math.random() * 300);
+    return `https://picsum.photos/${width}/${height}`;
 }
 
-function getNextIndex() {
-    return (currentIndex + 1) % images.length;
+function updateImage() {
+    const randomImageURL = getRandomImageURL();
+    imageElement.src = randomImageURL;
 }
 
 function showNextImage() {
-    currentIndex = getNextIndex();
-    updateImage(currentIndex);
+    updateImage();
 }
 
 nextButton.addEventListener("click", showNextImage);
 
 // Initial image load
-updateImage(currentIndex);
+updateImage();
 
 // Auto-change image every 30 seconds
 setInterval(showNextImage, 30000);
