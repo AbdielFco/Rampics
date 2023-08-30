@@ -1,6 +1,5 @@
 body {
     display: flex;
-    flex-direction: column; /* Cambiamos la dirección del flujo */
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -10,7 +9,8 @@ body {
 
 .container {
     text-align: center;
-    margin-top: 20px; /* Agregamos un margen superior */
+    display: flex;
+    flex-direction: column;
 }
 
 .circle {
@@ -57,10 +57,5 @@ body {
 .txtcontainer {
     text-align: center;
     background-color: #ccc;
-    display: flex;
-    flex-direction: column; /* Cambiamos la dirección del flujo */
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    margin: 10px auto; /* Ajustamos el margen */
+    margin: 10px auto;
 }
