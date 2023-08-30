@@ -45,3 +45,13 @@ body {
         height: 150px;
     }
 }
+
+.txtcontainer {
+    text-align: center;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin: 0 auto;
+}
