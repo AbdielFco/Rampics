@@ -1,37 +1,30 @@
 const imageElement = document.getElementById("image");
 const nextButton = document.getElementById("nextButton");
-
-// ... (código JavaScript existente) ...
-
+const rankButton = document.getElementById("rankButton");
+const homeButton = document.getElementById("homeButton");
+const galleryButton = document.getElementById("galleryButton");
 const categorySelect = document.getElementById("categorySelect");
 
-function filterImages(category) {
-    if (category === "all") {
-        return images;
-    } else {
-        return images.filter(image => image.category === category);
-    }
-}
+// Array de imágenes con categorías
+const images = [
+    { url: "imagen1.jpg", category: "paisajes" },
+    { url: "imagen2.jpg", category: "anime" },
+    { url: "imagen3.jpg", category: "series" },
+    // ... agregar más imágenes y categorías ...
+];
 
-categorySelect.addEventListener("change", () => {
-    const selectedCategory = categorySelect.value;
-    const filteredImages = filterImages(selectedCategory);
-    currentIndex = 0; // Resetear el índice al cambiar de categoría
-    images = filteredImages;
-    updateImage();
-});
+let currentIndex = 0;
+let likedImages = [];
 
-// ... (resto del código JavaScript existente) ...
-
-
-function getRandomImageURL() {
-    const width = 300 + Math.floor(Math.random() * 300);
-    const height = 300 + Math.floor(Math.random() * 300);
-    return `https://picsum.photos/${width}/${height}`;
+function getRandomImageURL(category) {
+    const filteredImages = category === "all" ? images : images.filter(img => img.category === category);
+    const randomIndex = Math.floor(Math.random() * filteredImages.length);
+    return filteredImages[randomIndex].url;
 }
 
 function updateImage() {
-    const randomImageURL = getRandomImageURL();
+    const selectedCategory = categorySelect.value;
+    const randomImageURL = getRandomImageURL(selectedCategory);
     imageElement.src = randomImageURL;
 }
 
@@ -41,8 +34,13 @@ function showNextImage() {
 
 nextButton.addEventListener("click", showNextImage);
 
-// Initial image load
+categorySelect.addEventListener("change", () => {
+    currentIndex = 0; // Resetear el índice al cambiar de categoría
+    updateImage();
+});
+
+// Carga inicial de imagen
 updateImage();
 
-// Auto-change image every 30 seconds
+// Cambiar imagen automáticamente cada 30 segundos
 setInterval(showNextImage, 30000);
