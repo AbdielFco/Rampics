@@ -1,1 +1,35 @@
-.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Random Image App</title>
+</head>
+<body>
+    <div class="container">
+        <div class="txtcontainer">
+            <h1>RAM-pics</h1>
+        </div>
+        
+        <div class="circle">
+            <img id="image" src="" alt="Random Image">
+        </div>
+        
+        <div class="txtcontainer">
+            <span>'Cada 30s <br>se genera una imagen'</span>
+        </div>
+        
+        <button id="nextButton">Generar</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
